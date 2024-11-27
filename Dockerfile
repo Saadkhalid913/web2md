@@ -11,7 +11,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy application code
-COPY webpage_to_markdown.py .
+COPY app.py .
 COPY markdown_converter.py .
 COPY user_agents.py .
 
@@ -22,4 +22,4 @@ EXPOSE 8000
 ENV USER_AGENT=chrome_windows
 
 # Command to run the application
-CMD ["uvicorn", "webpage_to_markdown:app", "--host", "0.0.0.0", "--port", "8000"] 
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"] 

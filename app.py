@@ -52,7 +52,7 @@ async def convert_webpages_batch(request: BatchURLRequest):
                 # Fetch the webpage
                 response = requests.get(decoded_url, headers={
                     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-                })
+                }, timeout=3)
                 response.raise_for_status()
                 
                 # Convert HTML to markdown using the separate module
@@ -64,7 +64,16 @@ async def convert_webpages_batch(request: BatchURLRequest):
                     "error": None
                 })
                 
+            except requests.exceptions.Timeout:
+                print(f"Error: The request to {url} timed out after 3 seconds.")
+                results.append({
+                    "url": url,
+                    "markdown": "",
+                    "success": False,
+                    "error": "Request timed out"
+                })
             except Exception as e:
+                print(e)
                 results.append({
                     "url": url,
                     "markdown": "",
