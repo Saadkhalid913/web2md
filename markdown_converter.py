@@ -61,6 +61,9 @@ def convert_html_to_markdown(html_content: str, base_url: str) -> str:
     
     # Convert to markdown
     converter = get_html2text_converter()
+    # write the html_with_absolute_urls to a file
+    with open("html_with_absolute_urls.html", "w") as file:
+        file.write(html_with_absolute_urls)
     markdown_text = converter.handle(html_with_absolute_urls)
     
     # Clean up the markdown

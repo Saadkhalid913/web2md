@@ -1,5 +1,6 @@
 fastapi
 uvicorn
-html2text
 requests
-beautifulsoup4>=4.9.3 
+html2text
+aiohttp
+beautifulsoup4
