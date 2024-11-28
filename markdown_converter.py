@@ -1,4 +1,4 @@
-import html2text
+import html_parser as html2text
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin, urlparse
 import re
