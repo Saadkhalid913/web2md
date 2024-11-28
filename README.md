@@ -105,13 +105,81 @@ Example Response:
 ```
 # Saad Khalid
 
-Software Engineer based in Toronto, Canada.
+CS @ [McMasterU](<https://McMaster.ca>)
 
-## About Me
 
-I'm a software engineer with experience in full-stack development, machine learning, and distributed systems...
+## Previously
+
+Infrastructure Engineering @ [Shopify](<https://shopify.com>)
+
+Backend dev @ [Aviato](<https://aviato.co>)
+
+Core dev @ [PadawanDAO](<https://padawandao.com>)
+
+North American finalist in Microsoft's [Imagine Cup](<https://imaginecup.microsoft.com/en-us/Team/550518d7-d2a6-4e64-96e5-a82bba7fe27c>)
+
+Re-implemented the [U-NET paper](<https://arxiv.org/abs/1505.04597>)
+
+Shipped an anonymized chat app at [Buildspace](<https://buildspace.so>) Nights and Weekends
+
+Developed CNNs from first-principles. Work can be found [here](<https://saadk.notion.site/Convolutional-Neural-Network-From-Scratch-53ef425cc27a45f88c75eba1ff470aab>).
+
+
+**Last Updated: 22/08/2024**
+
+
+[Github](<https://github.com/saadkhalid913>)[Twitter](<https://twitter.com/saad89d>)[LinkedIn](<https://www.linkedin.com/in/saad-khalid1/>)[YouTube](<https://www.youtube.com/channel/UC4jTfAsz_ZvQUIFfkGamZXw/featured>)
+
+[Projects](<https://saadkhalid.com/projects>)[Contact](<https://saadkhalid.com/contact>)[My Tech Stack](<https://saadkhalid.com/tech-stack>)
+
+[More about me →](<https://saadkhalid.com/whoami>)
+
+Saad Khalid 2023
 ```
 
 ### Batch URL Conversion
 
-[rest of the document remains the same...]
+Convert multiple webpages to Markdown in a single request:
+
+```
+curl -X POST "http://localhost:8000/convert/batch" \
+     -H "Content-Type: application/json" \
+     -d '{
+       "urls": [
+         "https://saadkhalid.com",
+         "https://example.com"
+       ]
+     }'
+```
+
+Example Response:
+
+```
+{
+    "results": [
+        {
+            "url": "https://saadkhalid.com",
+            "markdown": "# Saad Khalid\n\nSoftware Engineer based in Toronto...",
+            "success": true,
+            "error": null
+        },
+        {
+            "url": "https://example.com",
+            "markdown": "# Example Domain\n\nThis domain is for use in illustrative examples...",
+            "success": true,
+            "error": null
+        }
+    ]
+}
+```
+
+Each result in the batch response includes:
+
+- `url`: The original URL requested
+- `markdown`: The converted markdown text (if successful)
+- `success`: Boolean indicating if the conversion succeeded
+- `error`: Error message if the conversion failed, null otherwise
+
+## License
+
+This project is licensed under the GNU GPL v3 License - see the LICENSE file for details.
