@@ -1,6 +1,10 @@
 # Use Python 3.10 slim image as base
 FROM python:3.10-slim
 
+# Install Git
+RUN apt-get update && apt-get install -y git && apt-get clean
+
+
 # Set working directory in container
 WORKDIR /app
 
@@ -14,6 +18,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY app.py .
 COPY markdown_converter.py .
 COPY user_agents.py .
+COPY ./html_parser ./html_parser
+RUN pip install --no-cache-dir -e ./html_parser
+
 
 # Expose port 8000
 EXPOSE 8000
