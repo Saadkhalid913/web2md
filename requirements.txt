@@ -27,3 +27,5 @@ urllib3==2.2.3
 uvicorn==0.32.1
 yarl==1.18.0
 git+https://github.com/Saadkhalid913/html2text.git
+pytest==7.4.3
+pytest-asyncio==0.21.1
