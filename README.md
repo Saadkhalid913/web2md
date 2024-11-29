@@ -6,10 +6,6 @@ A FastAPI-based web service that converts HTML web pages to clean, readable Mark
 
 - Convert single web pages to Markdown via API endpoint
 - Batch convert multiple URLs in a single request
-- Handles relative URLs by converting them to absolute URLs
-- Configurable user agent for web requests
-- Built on FastAPI for high performance and easy API documentation
-- Uses the battle-tested html2text library for reliable HTML to Markdown conversion
 
 ## Installation & Setup
 
