@@ -18,8 +18,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY app.py .
 COPY markdown_converter.py .
 COPY user_agents.py .
-COPY ./html_parser ./html_parser
-RUN pip install --no-cache-dir -e ./html_parser
 
 
 # Expose port 8000
