@@ -73,15 +73,7 @@ The API will be available at `http://localhost:8000`
    pip install -r requirements.txt
    ```
 
-6. Install the html_parser submodule:
-
-   ```
-   cd html_parser
-   pip install -e .
-   cd ..
-   ```
-
-7. Run the application:
+6. Run the application:
    ```
    uvicorn app:app --host 0.0.0.0 --port 8000
    ```
