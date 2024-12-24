@@ -1,6 +1,9 @@
 # Python
 __pycache__/
 *.py[cod]
+.pytest_cache/
+.mypy_cache/
+
 
 # Virtual Environment
 venv/
@@ -14,3 +17,7 @@ env/
 
 # Test files
 test*.md 
+
+# Build files
+build/
+dist/
