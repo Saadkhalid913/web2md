@@ -2,6 +2,11 @@ import html2text
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin, urlparse
 import re
+from .user_agents import DEFAULT_USER_AGENT
+import requests
+import aiohttp
+import asyncio
+
 
 def convert_relative_urls_to_absolute(html_content: str, base_url: str) -> str:
     """Convert all relative URLs in the HTML to absolute URLs."""
@@ -68,3 +73,26 @@ def convert_html_to_markdown(html_content: str, base_url: str) -> str:
     
     # Clean up the markdown
     return clean_markdown(markdown_text) 
+
+def convert_url_to_markdown(url: str, user_agent: str = DEFAULT_USER_AGENT) -> str:
+    response = requests.get(url, headers={"User-Agent": user_agent})
+    response.raise_for_status()
+    html_content = response.text
+    return convert_html_to_markdown(html_content, url)
+
+
+def convert_urls_to_markdown(urls: list[str], user_agent: str = DEFAULT_USER_AGENT) -> list[str]:
+    return [convert_url_to_markdown(url, user_agent) for url in urls]
+
+
+async def async_convert_url_to_markdown(url: str, user_agent: str = DEFAULT_USER_AGENT) -> str:
+    async with aiohttp.ClientSession() as session:
+        async with session.get(url, headers={"User-Agent": user_agent}) as response:
+            response.raise_for_status()
+            html_content = await response.text()
+            return convert_html_to_markdown(html_content, url)
+
+
+async def async_convert_urls_to_markdown(urls: list[str], user_agent: str = DEFAULT_USER_AGENT) -> list[str]:
+    tasks = [async_convert_url_to_markdown(url, user_agent) for url in urls]
+    return await asyncio.gather(*tasks)
