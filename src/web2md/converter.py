@@ -3,18 +3,16 @@ from bs4 import BeautifulSoup
 from urllib.parse import urljoin, urlparse
 import re
 from .user_agents import DEFAULT_USER_AGENT
-import requests
 import aiohttp
 import asyncio
-
-
+from typing import List, Dict, Union, Any
+import requests
 def convert_relative_urls_to_absolute(html_content: str, base_url: str) -> str:
     """Convert all relative URLs in the HTML to absolute URLs."""
     soup = BeautifulSoup(html_content, 'html.parser')
     
     # Get the base domain for the URL
     parsed_base = urlparse(base_url)
-    base_domain = f"{parsed_base.scheme}://{parsed_base.netloc}"
     
     # Convert relative URLs in various attributes
     for tag in soup.find_all(['a', 'img', 'link', 'script']):

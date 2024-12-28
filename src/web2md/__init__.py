@@ -1,5 +1,10 @@
-
-from .user_agents import USER_AGENTS
+from .converter import convert_url_to_markdown, convert_urls_to_markdown, async_convert_url_to_markdown, async_convert_urls_to_markdown, convert_html_to_markdown
 
 __version__ = "0.1.0"
-__all__ = ["convert_url_to_markdown", "convert_urls_to_markdown", "USER_AGENTS"] 
+__all__ = [
+    "convert_url_to_markdown",
+    "convert_urls_to_markdown",
+    "async_convert_url_to_markdown",
+    "async_convert_urls_to_markdown",
+    "convert_html_to_markdown"
+] 
