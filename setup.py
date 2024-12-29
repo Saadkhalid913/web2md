@@ -3,22 +3,28 @@ from setuptools import setup, find_packages
 setup(
     name='web2md',
     version='0.1.0',
-    description='A FastAPI-based web service that converts HTML web pages to Markdown format.',
-    author='Your Name',
-    author_email='your.email@example.com',
-    packages=find_packages(),
+    description='Convert web pages to clean, readable Markdown',
+    long_description=open('README.md').read(),
+    long_description_content_type='text/markdown',
+    author='Saad Khalid',
+    author_email='saadkhalid913+dev@gmail.com',
+    url='https://github.com/Saadkhalid913/web2md',
+    packages=find_packages(where='src'),
+    package_dir={'': 'src'},
     install_requires=[
-        'aiohttp==3.11.7',
-        'beautifulsoup4==4.12.3',
-        'fastapi==0.115.5',
-        'html2text',
-        'requests==2.32.3',
-        'uvicorn==0.32.1',
-        'pydantic==2.10.2',
+        'beautifulsoup4>=4.12.3',
+        'requests>=2.32.3',
+        'html2text @ git+https://github.com/Saadkhalid913/html2text.git'
     ],
-    entry_points={
-        'console_scripts': [
-            'web2md=app:main',  # Assuming you have a main function in app.py
-        ],
-    },
+    python_requires='>=3.7',
+    classifiers=[
+        'Development Status :: 3 - Alpha',
+        'Intended Audience :: Developers',
+        'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
+    ],
 ) 
